@@ -22,12 +22,27 @@ enum Gender {
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
-  username      String   @unique
+  username  String   @unique
   password  String
   name      String  
   gender    Gender?
-  banner String?
+  channelName String? 
+  banner    String?
   profilePicture String?
+  subscriber Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+model Uploads {
+  id        String   @id @default(uuid())
+  title     String
+  description String?
+  url       String
+  thumbnail String?
+  userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
